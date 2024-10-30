@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timetables</title>
+  <style>
+    @font-face {
+      font-family: "HCo Gotham Rounded";
+      src: url("./fonts/GothamRnd-Medium_Web.woff2") format("woff2"),
+        url("./fonts/GothamRnd-Medium_Web.woff") format("woff");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    body {
+      font-family: HCo Gotham Rounded, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+
+    h1 {
+      text-align: center;
+    }
+
+    .stop {
+      margin-bottom: 40px;
+    }
+
+    .stop img {
+      width: 50px;
+      vertical-align: middle;
+    }
+
+    .stop h2 {
+      display: inline-block;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    .directions {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .direction {
+      flex: 1;
+      margin: 0 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .timetable {
+      list-style-type: none;
+      padding: 0;
+      flex: 1;
+    }
+
+    .timetable li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .timetable li:last-child {
+      border-bottom: none;
+    }
+
+    .timetables {
+      display: flex;
+    }
+
+    .otsikko {
+      font-size: 5em;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <section class="timetables  ">
+
+      <div class="stop" id="bus-stop">
+        <div style="display: flex; justify-content: center;">
+          <img src="images/Bussi.svg" alt="Bus Icon">
+          <h2>Karamalmens Skola</h2>
+        </div>
+        <div class="directions">
+          <div class="direction" id="bus-direction-1">
+            <ul class="timetable" id="bus-timetable-1">
+              <!-- Bus timetable entries for direction 1 will be inserted here -->
+            </ul>
+          </div>
+          <div class="direction" id="bus-direction-2">
+            <ul class="timetable" id="bus-timetable-2">
+              <!-- Bus timetable entries for direction 2 will be inserted here -->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="stop" id="train-stop">
+        <div style="display: flex; justify-content: center;">
+          <img src="images/Juna.svg" alt="Train Icon">
+          <h2>Keran asema</h2>
+        </div>
+        <div class="directions">
+          <div class="direction" id="train-direction-1">
+            <ul class="timetable" id="train-timetable-1">
+              <!-- Train timetable entries for direction 1 will be inserted here -->
+            </ul>
+          </div>
+          <div class="direction" id="train-direction-2">
+            <ul class="timetable" id="train-timetable-2">
+              <!-- Train timetable entries for direction 2 will be inserted here -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="hsl.js"></script>
+</body>
+
+</html>
