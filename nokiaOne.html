@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sodexo Menu</title>
+  <style>
+    @font-face {
+      font-family: "HCo Gotham Rounded";
+      src: url("./fonts/GothamRnd-Medium_Web.woff2") format("woff2"),
+        url("./fonts/GothamRnd-Medium_Web.woff") format("woff");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    body {
+      font-family: HCo Gotham Rounded, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    #nokia-one {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f4f4f4;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    .sodexoimg {
+      max-width: 25%;
+      height: auto;
+      flex: 1 1 300px;
+      margin: 10px;
+    }
+
+    .content {
+      flex: 2 1 500px;
+      margin: 10px;
+    }
+
+    @media (max-width: 768px) {
+
+      .sodexoimg,
+      .content {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="nokia-one">
+    <img src="images/sodexo.png" alt="Nokia One" class="sodexoimg">
+    <div class="content" id="content">
+      <!-- Additional content goes here -->
+    </div>
+  </div>
+
+  <script src="nokiaOne.js"></script>
+</body>
+
+</html>
