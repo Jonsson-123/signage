@@ -6,47 +6,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sodexo Menu</title>
   <style>
+    /* Importing Custom Font */
     @font-face {
       font-family: "HCo Gotham Rounded";
       src: url("./fonts/GothamRnd-Medium_Web.woff2") format("woff2"),
-        url("./fonts/GothamRnd-Medium_Web.woff") format("woff");
+           url("./fonts/GothamRnd-Medium_Web.woff") format("woff");
       font-weight: 500;
       font-style: normal;
     }
 
+    /* CSS Variables for Colors and Padding */
+    :root {
+      --background-color: #ffffff;
+      --text-color: #333;
+      --accent-color: #0055a5;
+      --padding: 20px;
+      --max-width: 1200px;
+    }
+
+    /* General Styles */
     body {
-      font-family: HCo Gotham Rounded, sans-serif;
+      font-family: "HCo Gotham Rounded", sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
 
     #nokia-one {
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #ffffff;
-      padding: 20px;
+      background-color: var(--background-color);
+      padding: var(--padding);
       flex-wrap: wrap;
+      max-width: var(--max-width);
+      width: 100%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
     }
 
+    /* Image Styling */
     .sodexoimg {
       max-width: 25%;
       height: auto;
       flex: 1 1 300px;
       margin: 10px;
+      transition: transform 0.3s ease;
     }
 
+    .sodexoimg:hover {
+      transform: scale(1.05);
+    }
+
+    /* Content Styling */
     .content {
       flex: 2 1 500px;
       margin: 10px;
+      padding: var(--padding);
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    @media (max-width: 768px) {
+    /* Responsive Design */
 
+    @media (max-width: 768px) {
       .sodexoimg,
       .content {
         flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      #nokia-one {
+        padding: 10px;
+      }
+
+      .sodexoimg {
+        margin: 5px 0;
+      }
+
+      .content {
+        padding: 15px;
       }
     }
   </style>
@@ -54,6 +105,7 @@
 
 <body>
   <div id="nokia-one">
+    <img src="images/sodexo.jpg" alt="Sodexo Image" class="sodexoimg">
     <div class="content" id="content">
       <!-- Additional content goes here -->
     </div>
