@@ -43,6 +43,7 @@ app.get('/proxy', async (req, res) => {
       // Check if latestScoreTimestamp is from today
       const latestScoreTimestamp = new Date(data.latestScoreTimestamp);
       const today = new Date();
+      // If the latest score is not from today, remove it from the response
       if (
         latestScoreTimestamp.getDate() !== today.getDate() ||
         latestScoreTimestamp.getMonth() !== today.getMonth() ||
