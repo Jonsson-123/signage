@@ -24,9 +24,9 @@ const fetchFeedbackDataAndRender = async () => {
         score: allScores[index],
       }))
       .filter((item) => {
-        const diffTime = Math.abs(today - item.timestamp);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        return diffDays <= 7;
+        const diffTime = today - item.timestamp;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        return diffDays <= 8 && diffDays >= 0;
       });
 
     // Sort by timestamp
