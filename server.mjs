@@ -18,6 +18,11 @@ app.get('/feedback', (req, res) => {
   res.sendFile(path.join(__dirname, 'feedback.html'));
 });
 
+// Route to serve feedbackHistory.html
+app.get('/feedbackHistory', (req, res) => {
+  res.sendFile(path.join(__dirname, 'feedbackHistory.html'));
+});
+
 // Proxy route for fetching data from Google Apps Script
 app.get('/proxy', async (req, res) => {
   try {
