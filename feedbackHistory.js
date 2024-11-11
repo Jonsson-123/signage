@@ -87,4 +87,4 @@ const fetchFeedbackDataAndRender = async () => {
   }
 };
 
-setTimeout(fetchFeedbackDataAndRender, 3000);
+fetchFeedbackDataAndRender();
