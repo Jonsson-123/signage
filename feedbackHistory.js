@@ -35,7 +35,7 @@ const fetchFeedbackDataAndRender = async () => {
     // Aggregate scores by day
     const scoresByDay = new Map();
     past7Days.forEach((item) => {
-      const day = item.timestamp.toISOString().split('T')[0];
+      const day = item.timestamp.toLocaleDateString('en-GB'); // Format as day/month/year
       if (!scoresByDay.has(day)) {
         scoresByDay.set(day, []);
       }
@@ -48,6 +48,8 @@ const fetchFeedbackDataAndRender = async () => {
       (scores) => scores.reduce((a, b) => a + b, 0) / scores.length
     );
 
+    // Create gradient for bars
+
     const feedbackChart = new Chart(ctx, {
       type: 'bar', // Change chart type to 'bar'
       data: {
@@ -56,9 +58,11 @@ const fetchFeedbackDataAndRender = async () => {
           {
             label: 'Average Feedback Score',
             data: scores, // Use aggregated scores
-            borderColor: 'rgba(75, 192, 192, 1)',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: '#005AFF', // Primary color 1
+            backgroundColor: 'rgba(0, 90, 225, 1)',
             borderWidth: 1,
+            hoverBackgroundColor: '#005AFF', // Primary color 1
+            hoverBorderColor: '#1D1E20', // Primary color 2
           },
         ],
       },
@@ -68,15 +72,69 @@ const fetchFeedbackDataAndRender = async () => {
             title: {
               display: true,
               text: 'Days',
+              color: '#1D1E20', // Primary color 2
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+            },
+            ticks: {
+              color: '#1D1E20', // Primary color 2
+              font: {
+                size: 12,
+              },
+            },
+            grid: {
+              color: '#1D1E20', // Primary color 3
             },
           },
           y: {
             title: {
               display: true,
               text: 'Score',
+              color: '#1D1E20', // Primary color 2
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+            },
+            ticks: {
+              color: '#1D1E20', // Primary color 2
+              font: {
+                size: 12,
+              },
+            },
+            grid: {
+              color: '#1D1E20', // Primary color 3
             },
             beginAtZero: true,
             max: 10, // Set the maximum value for the y-axis
+          },
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#1D1E20', // Primary color 2
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+            },
+          },
+          tooltip: {
+            backgroundColor: '#1D1E20', // Primary color 3
+            titleColor: '#F3F3F3', // Primary color 2
+            bodyColor: '#F3F3F3', // Primary color 2
+            borderColor: '#F3F3F3', // Primary color 2
+            borderWidth: 1,
+          },
+        },
+        layout: {
+          padding: {
+            left: 10,
+            right: 10,
+            top: 10,
+            bottom: 10,
           },
         },
       },
