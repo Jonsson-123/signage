@@ -23,7 +23,7 @@ app.get('/proxy', async (req, res) => {
   try {
     console.log('Attempting to fetch data from Google Apps Script...');
     const response = await fetch(
-      'https://script.google.com/macros/s/AKfycbxs2RfgRH04m-7LbX2APfh63Da3vJy2IHx9HWIQZYPMSrJhw19k94v9Ougb3qWhzIyq0A/exec?timestamp=' +
+      'https://script.google.com/macros/s/AKfycbzqLw_2LVKirEjSA1VpPd02oDhssPZpXXmnJlgCcRRIdYRIkKksbcJBvX5XcWaXp-_Cqg/exec?timestamp=' +
         new Date().getTime()
     );
     if (!response.ok) {
