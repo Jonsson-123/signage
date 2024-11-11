@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Tree</title>
+  <style>
+    /* Basic styling */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa; /* Light blue background for a refreshing look */
+      overflow: hidden;
+    }
+
+    .qr-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #qrcode {
+      border: 2px solid #00796b; /* Dark teal border around QR code */
+      border-radius: 8px;
+      padding: 10px;
+      background-color: #ffffff;
+    }
+
+    h2 {
+      color: #00796b; /* Dark teal color */
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    #tree {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      height: 400px;
+      background-color: #a5d6a7; /* Light green background for the tree area */
+      border-radius: 50%;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    /* Tree trunk */
+    .trunk {
+      width: 60px;
+      height: 120px;
+      background-color: #6d4c41; /* Dark brown color for trunk */
+      position: absolute;
+      bottom: 0;
+      border-radius: 10px;
+    }
+
+    /* Leaf styling */
+    .leaf {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      position: absolute;
+      opacity: 0; /* Start invisible */
+      animation: grow 0.6s ease forwards; /* Animate growth */
+      transform-origin: center;
+    }
+
+    /* Leaf growing animation */
+    @keyframes grow {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Optional error message styling */
+    #errorMessage {
+      color: #d32f2f; /* Red for error message */
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+  <!-- Include the QRious library for QR code generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js" defer></script>
+  <!-- Main JavaScript File -->
+  <script src="feedback.js" defer></script>
+</head>
+<body>
+
+  <!-- QR Code Section -->
+  <div class="qr-container">
+    <h2>Give Us Your Feedback</h2>
+    <div id="qrcode"></div>
+  </div>
+
+  <!-- Tree Section -->
+  <div id="tree">
+    <div class="trunk"></div>
+    <!-- Leaves will be dynamically added here by feedback.js -->
+  </div>
+
+  <!-- Optional Error Display -->
+  <div id="errorMessage"></div>
+
+</body>
+</html>

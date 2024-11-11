@@ -122,3 +122,22 @@ setInterval(() => {
 
 // Call renderHSL to execute the rendering
 renderHSL();
+
+// Function to scale timetable based on viewport size
+function adjustTimetableScale() {
+  const timetables = document.querySelector('.timetables');
+  const width = window.innerWidth;
+
+  // Set scale based on window width
+  if (width < 480) {
+    timetables.style.transform = 'scale(0.6)';
+  } else if (width < 768) {
+    timetables.style.transform = 'scale(0.8)';
+  } else {
+    timetables.style.transform = 'scale(1)'; // Default scale for larger screens
+  }
+}
+
+// Call adjustTimetableScale on load and resize
+window.addEventListener('load', adjustTimetableScale);
+window.addEventListener('resize', adjustTimetableScale);

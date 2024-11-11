@@ -1,204 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Timetables</title>
   <style>
     /* Importing Custom Font */
-@font-face {
-  font-family: "HCo Gotham Rounded";
-  src: url("./fonts/GothamRnd-Medium_Web.woff2") format("woff2"),
-       url("./fonts/GothamRnd-Medium_Web.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-}
+    @font-face {
+      font-family: "HCo Gotham Rounded";
+      src: url("./fonts/GothamRnd-Medium_Web.woff2") format("woff2"),
+           url("./fonts/GothamRnd-Medium_Web.woff") format("woff");
+      font-weight: 500;
+      font-style: normal;
+    }
 
-/* CSS Variables for Colors and Spacing */
-:root {
-  --background-color: #ffffff;
-  --text-color: #333;
-  --border-color: #ddd;
-  --accent-color: #3498db;
-  --padding: 20px;
-  --font-size-large: 1.5em;
-  --font-size-small: 1em;
-}
+    /* CSS Variables for Colors and Spacing */
+    :root {
+      --background-color: #ffffff;
+      --text-color: #333;
+      --border-color: #ddd;
+      --accent-color: #3498db;
+      --padding: 20px;
+      --font-size-large: 1.5em;
+      --font-size-small: 1em;
+    }
 
-body {
-  font-family: "HCo Gotham Rounded", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  color: var(--text-color);
-}
+    /* Base Styles */
+    body {
+      font-family: "HCo Gotham Rounded", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      color: var(--text-color);
+    }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--padding);
-}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--padding);
+    }
 
-/* Heading Styles */
-h1 {
-  text-align: center;
-  color: var(--accent-color);
-  font-size: var(--font-size-large);
-  margin-bottom: var(--padding);
-}
+    /* Two-column Layout for Stops */
+    .timetables {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+      gap: 20px; /* Space between columns */
+    }
 
-/* Stop Section Styling */
-.stop {
-  margin-bottom: 40px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s ease;
-}
+    /* Stop Section Styling */
+    .stop {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: var(--padding);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
 
-.stop:hover {
-  transform: scale(1.02);
-}
+    .stop:hover {
+      transform: scale(1.02);
+    }
 
-.stop img {
-  width: 50px;
-  vertical-align: middle;
-}
+    .stop img {
+      width: 40px;
+      vertical-align: middle;
+    }
 
-.stop h2 {
-  display: inline-block;
-  margin-left: 10px;
-  font-size: var(--font-size-small);
-  vertical-align: middle;
-  color: var(--accent-color);
-}
+    .stop h2 {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: var(--font-size-small);
+      vertical-align: middle;
+      color: var(--accent-color);
+    }
 
-/* Flexbox Layout for Timetables */
-.directions {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--padding);
-}
+    /* Directions Styling */
+    .directions {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
 
-.direction {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+    .direction {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
 
-/* Timetable List Styles */
-.timetable {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
+    /* Timetable List Styles */
+    .timetable {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
 
-.timetable li {
-  padding: 10px;
-  border-bottom: 1px solid var(--border-color);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: background-color 0.2s ease;
-}
+    .timetable li {
+      padding: 8px;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: background-color 0.2s ease;
+      font-size: 0.9em; /* Reduce font size to fit smaller screens */
+    }
 
-.timetable li:hover {
-  background-color: var(--accent-color);
-  color: white;
-}
+    .timetable li:hover {
+      background-color: var(--accent-color);
+      color: white;
+    }
 
-.timetable li:last-child {
-  border-bottom: none;
-}
-
-.otsikko {
-  font-size: 5em;
-  font-weight: 500;
-  margin-bottom: 20px;
-  color: var(--accent-color);
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .directions {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .stop h2 {
-    font-size: 1.2em;
-  }
-
-  .timetable li {
-    font-size: 0.9em;
-  }
-}
-
-@media (max-width: 480px) {
-  .stop img {
-    width: 40px;
-  }
-
-  .otsikko {
-    font-size: 3em;
-    text-align: center;
-  }
-
-  .direction {
-    width: 100%;
-  }
-
-  .timetables {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
+    .timetable li:last-child {
+      border-bottom: none;
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <section class="timetables  ">
-
+    <section class="timetables">
+      
+      <!-- First Column: Karamalmin Skola -->
       <div class="stop" id="bus-stop">
         <div style="display: flex; justify-content: center;">
           <img src="images/Bussi.svg" alt="Bus Icon">
-          <h2>Karamalmens Skola</h2>
+          <h2>Karamalmin Skola</h2>
         </div>
         <div class="directions">
           <div class="direction" id="bus-direction-1">
             <ul class="timetable" id="bus-timetable-1">
-              <!-- Bus timetable entries for direction 1 will be inserted here -->
+              <!-- Bus timetable entries for direction 1 -->
             </ul>
           </div>
           <div class="direction" id="bus-direction-2">
             <ul class="timetable" id="bus-timetable-2">
-              <!-- Bus timetable entries for direction 2 will be inserted here -->
+              <!-- Bus timetable entries for direction 2 -->
             </ul>
           </div>
         </div>
       </div>
 
+      <!-- Second Column: Karamalmin Asema -->
       <div class="stop" id="train-stop">
         <div style="display: flex; justify-content: center;">
           <img src="images/Juna.svg" alt="Train Icon">
-          <h2>Keran asema</h2>
+          <h2>Karamalmin Asema</h2>
         </div>
         <div class="directions">
           <div class="direction" id="train-direction-1">
             <ul class="timetable" id="train-timetable-1">
-              <!-- Train timetable entries for direction 1 will be inserted here -->
+              <!-- Train timetable entries for direction 1 -->
             </ul>
           </div>
           <div class="direction" id="train-direction-2">
             <ul class="timetable" id="train-timetable-2">
-              <!-- Train timetable entries for direction 2 will be inserted here -->
+              <!-- Train timetable entries for direction 2 -->
             </ul>
           </div>
         </div>
       </div>
+
     </section>
   </div>
 
