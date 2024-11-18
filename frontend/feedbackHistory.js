@@ -1,8 +1,31 @@
-const ctx = document.getElementById('feedbackChart').getContext('2d');
+// Get modal element
+const modal = document.getElementById('authModal');
+const closeBtn = document.querySelector('.close');
+const cancelBtn = document.getElementById('cancelBtn');
+const loginBtn = document.getElementById('loginBtn');
+
+// Function to open modal
+const openModal = () => {
+  modal.style.display = 'block';
+};
+
+// Function to close modal
+const closeModal = () => {
+  modal.style.display = 'none';
+};
 
 const fetchFeedbackDataAndRender = async () => {
   try {
-    const response = await fetch('http://localhost:3000/proxy');
+    const token = localStorage.getItem('token'); // Retrieve the token from localStorage or another storage mechanism
+    if (!token) {
+      throw new Error('No token found');
+    }
+
+    const response = await fetch('http://localhost:3000/secure/proxy', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     if (!response.ok) {
       throw new Error(
         `Network response was not ok: ${response.status} - ${response.statusText}`
@@ -145,4 +168,68 @@ const fetchFeedbackDataAndRender = async () => {
   }
 };
 
-fetchFeedbackDataAndRender();
+const doLogin = async (username, password) => {
+  try {
+    const response = await fetch('http://localhost:3000/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
+    if (!response.ok) {
+      throw new Error(
+        `Network response was not ok: ${response.status} - ${response.statusText}`
+      );
+    }
+    const data = await response.json();
+    console.log('Data received from /auth/login:', data);
+
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+      closeModal();
+      fetchFeedbackDataAndRender();
+    } else {
+      alert('Login failed. Please try again.');
+    }
+  } catch (error) {
+    alert('Login failed. Please try again.');
+    openModal();
+    console.error('Error logging in:', error);
+    return null;
+  }
+};
+
+// Event listeners
+closeBtn.onclick = closeModal;
+cancelBtn.onclick = closeModal;
+loginBtn.onclick = () => {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  if (username && password) {
+    // Handle authentication logic here
+
+    doLogin(username, password);
+
+    closeModal();
+  } else {
+    alert('Please enter both username and password.');
+  }
+};
+
+const ctx = document.getElementById('feedbackChart').getContext('2d');
+
+const checkIfAuthenticated = async () => {
+  try {
+    if (!localStorage.getItem('token')) {
+      openModal();
+      return;
+    }
+    fetchFeedbackDataAndRender();
+  } catch (error) {
+    console.error('Error checking authentication:', error);
+    return null;
+  }
+};
+
+checkIfAuthenticated();
