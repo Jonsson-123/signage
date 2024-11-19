@@ -175,8 +175,7 @@ loginBtn.onclick = () => {
   }
 };
 
-// Initial tree update with a slight delay to ensure the page is fully loaded
-setTimeout(updateTree, 500);
+updateTree();
 
 // Periodic update every 5 seconds to check for new feedback
-setInterval(updateTree, 5000);
+setInterval(updateTree, 10000);
