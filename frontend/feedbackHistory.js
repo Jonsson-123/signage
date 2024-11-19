@@ -28,6 +28,9 @@ const fetchFeedbackDataAndRender = async () => {
       },
     });
     if (!response.ok) {
+      if (response.status === 401) {
+        openModal(); // Open the modal if the response status is 401
+      }
       throw new Error(
         `Network response was not ok: ${response.status} - ${response.statusText}`
       );
