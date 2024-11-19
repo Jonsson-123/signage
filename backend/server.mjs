@@ -30,7 +30,7 @@ app.use(passport.initialize());
 // Connect to the MongoDB database
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost/wallofwonders', {
+    await mongoose.connect(process.env.MONGO_URI, {
       serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
       socketTimeoutMS: 45000, // Increase socket timeout to 45 seconds
     });
