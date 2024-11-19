@@ -7,8 +7,8 @@ import passport from './utils/pass.js';
 import authRoutes from './routes/authRoutes.js';
 import secureRoute from './routes/secureRoutes.js';
 import cors from 'cors';
-require('dotenv').config();
-
+import { config } from 'dotenv';
+config();
 const app = express();
 const PORT = 3000;
 
