@@ -3,7 +3,8 @@ const modal = document.getElementById('authModal');
 const closeBtn = document.querySelector('.close');
 const cancelBtn = document.getElementById('cancelBtn');
 const loginBtn = document.getElementById('loginBtn');
-
+//const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://wallofwondersinc.northeurope.cloudapp.azure.com';
 // Function to open modal
 const openModal = () => {
   modal.style.display = 'block';
@@ -21,7 +22,7 @@ const fetchFeedbackDataAndRender = async () => {
       throw new Error('No token found');
     }
 
-    const response = await fetch('http://localhost:3000/secure/proxy', {
+    const response = await fetch(baseUrl + '/secure/proxy', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -170,7 +171,7 @@ const fetchFeedbackDataAndRender = async () => {
 
 const doLogin = async (username, password) => {
   try {
-    const response = await fetch('http://localhost:3000/auth/login', {
+    const response = await fetch(baseUrl + '/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

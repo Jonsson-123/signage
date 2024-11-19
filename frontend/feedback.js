@@ -1,5 +1,6 @@
 console.log('feedback.js loaded');
-
+//const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://wallofwondersinc.northeurope.cloudapp.azure.com';
 // Generate QR code with Google Survey link
 const surveyLink =
   'https://docs.google.com/forms/d/e/1FAIpQLSfHM_MzAF1n7mKpTBQTSLT0lFamtGNUQh4VOdWXz0kMqo8W6w/viewform?usp=sf_link';
@@ -49,7 +50,7 @@ const closeModal = () => {
 
 const doLogin = async (username, password) => {
   try {
-    const response = await fetch('http://localhost:3000/auth/login', {
+    const response = await fetch(baseUrl + '/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -88,7 +89,7 @@ async function getFeedbackScore() {
       throw new Error('No token found');
     }
 
-    const response = await fetch('http://localhost:3000/secure/proxy', {
+    const response = await fetch(baseUrl + '/secure/proxy', {
       headers: {
         Authorization: `Bearer ${token}`,
       },

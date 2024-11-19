@@ -3,6 +3,8 @@ import express from 'express';
 import { body, validationResult } from 'express-validator';
 import passport from 'passport';
 import httpError from '../utils/errors.js';
+import { config } from 'dotenv';
+config();
 const router = express.Router();
 
 // Define a separate function for handling passport authentication
