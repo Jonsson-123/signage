@@ -1,6 +1,6 @@
 console.log('feedback.js loaded');
-//const baseUrl = 'http://localhost:3000';
-const baseUrl = 'https://wallofwondersinc.northeurope.cloudapp.azure.com';
+const baseUrl = 'http://localhost:3000';
+// const baseUrl = 'https://wallofwondersinc.northeurope.cloudapp.azure.com';
 // Generate QR code with Google Survey link
 const surveyLink =
   'https://docs.google.com/forms/d/e/1FAIpQLSfHM_MzAF1n7mKpTBQTSLT0lFamtGNUQh4VOdWXz0kMqo8W6w/viewform?usp=sf_link';
@@ -114,7 +114,8 @@ async function getFeedbackScore() {
 }
 
 // Function to add a new leaf to the tree based on the feedback score
-function addLeaf(score) {
+// Function to add a new leaf to the tree based on the feedback score
+const addLeaf = (score) => {
   if (score === null || score < 1 || score > 10) {
     console.log('Invalid score received or no score available.');
     document.getElementById('errorMessage').textContent =
@@ -130,19 +131,28 @@ function addLeaf(score) {
   leaf.classList.add('leaf');
   leaf.style.backgroundColor = color;
 
-  // Set a random position within the tree
+  // Set a random position within the ellipse
   const tree = document.getElementById('tree');
   const treeWidth = tree.offsetWidth;
   const treeHeight = tree.offsetHeight;
-  const x = Math.random() * (treeWidth - 20); // Adjust 20 for leaf size
-  const y = Math.random() * (treeHeight - 20);
 
-  leaf.style.left = `${x}px`;
-  leaf.style.top = `${y}px`;
+  let x, y;
+  do {
+    // Generate random x and y within a bounding rectangle
+    x = Math.random() * treeWidth - treeWidth / 2;
+    y = Math.random() * treeHeight - treeHeight / 2;
+  } while ((x ** 2) / ((treeWidth / 2) ** 2) + (y ** 2) / ((treeHeight / 2) ** 2) > 1);
+
+  // Convert to absolute positioning
+  const centerX = treeWidth / 2;
+  const centerY = treeHeight / 2;
+  leaf.style.left = `${centerX + x}px`;
+  leaf.style.top = `${centerY + y}px`;
 
   // Add the new leaf to the tree
   tree.appendChild(leaf);
 }
+
 
 // Function to fetch the score and add a new leaf if the score is new
 async function updateTree() {
@@ -152,6 +162,7 @@ async function updateTree() {
   }
   const score = await getFeedbackScore();
 
+  console.log('Last score:', score);
   // Check if the score is different from the last processed score
   if (score !== null && score !== lastScore) {
     addLeaf(score); // Add a new leaf for each unique feedback score

@@ -154,6 +154,51 @@
       padding: 10px 20px;
       margin-left: 10px;
     }
+
+    #legend {
+      position: absolute;
+      top: 10px;
+      /* Adjust for spacing from the top */
+      right: 10px;
+      /* Adjust for spacing from the right */
+      background-color: rgba(255, 255, 255, 0.9);
+      /* Slightly transparent white background */
+      border: 1px solid #ddd;
+      /* Light border to separate it visually */
+      border-radius: 8px;
+      /* Rounded corners */
+      padding: 10px;
+      /* Add padding for better spacing */
+      z-index: 10;
+      /* Ensure it stays on top of other elements */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* Subtle shadow for better visibility */
+    }
+
+    #legend h3 {
+      margin: 0 0 10px 0;
+      color: #00796b;
+      /* Teal for the header */
+      font-size: 1em;
+      /* Smaller size for a compact look */
+      text-align: left;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .legend-color {
+      width: 15px;
+      /* Smaller size for compactness */
+      height: 15px;
+      margin-right: 5px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+      /* Optional border for better visibility */
+    }
   </style>
   <!-- Include the QRious library for QR code generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js" defer></script>
@@ -166,7 +211,7 @@
   <!-- QR Code Section -->
   <div class="qr-container">
     <h2>Give Us Your Feedback</h2>
-    <div id="qrcode"></div>
+    <!-- <div id="qrcode"></div> -->
   </div>
 
   <!-- Tree Section -->
@@ -175,10 +220,55 @@
     <!-- Leaves will be dynamically added here by feedback.js -->
   </div>
 
+  <!-- Legend Section -->
+  <div id="legend">
+    <h3>Event ratings</h3>
+    <div class="legend-item">
+      <div class="legend-color" style="background-color: #ff0000;"></div>
+      <span>1 - Very Bad</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background-color: #ff4500;"></div>
+      <span>2 - Bad</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background-color: #ff8c00;"></div>
+      <span>3 - Poor</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background-color: #ffd700;"></div>
+      <span>4 - Below Average</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background-color: #ffff00;"></div>
+      <span>5 - Average</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background-color: #adff2f;"></div>
+      <span>6 - Above Average</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background-color: #7fff00;"></div>
+      <span>7 - Good</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background-color: #32cd32;"></div>
+      <span>8 - Very Good</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background-color: #008000;"></div>
+      <span>9 - Excellent</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background-color: #006400;"></div>
+      <span>10 - Outstanding</span>
+    </div>
+  </div>
+
   <!-- Optional Error Display -->
   <div id="errorMessage"></div>
-  <!-- Modal -->
 
+  <!-- Modal -->
   <div id="authModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -195,6 +285,8 @@
       </div>
     </div>
   </div>
+
 </body>
+
 
 </html>
