@@ -65,6 +65,3 @@ The following environment variables need to be set in the `.env` file in the `ba
 
 - `GET /secure/proxy`: Fetch data from Google Apps Script.
 
-## License
-
-This project is licensed under the MIT License.
