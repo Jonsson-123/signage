@@ -1,13 +1,14 @@
 'use strict';
 import express from 'express';
 const router = express.Router();
+import { config } from 'dotenv';
+config();
 
 router.get('/proxy', async (req, res) => {
   try {
     console.log('Attempting to fetch data from Google Apps Script...');
     const response = await fetch(
-      'https://script.google.com/macros/s/AKfycbzqLw_2LVKirEjSA1VpPd02oDhssPZpXXmnJlgCcRRIdYRIkKksbcJBvX5XcWaXp-_Cqg/exec?timestamp=' +
-        new Date().getTime()
+      `${process.env.GOOGLE_APPS_SCRIPT_URL}?timestamp=${new Date().getTime()}`
     );
     if (!response.ok) {
       console.error(
