@@ -9,7 +9,7 @@ A series of web applications that provide various functionalities including user
 - [Project Structure](#project-structure)
 - [Environment Variables](#environment-variables)
 - [API Endpoints](#api-endpoints)
-- [License](#license)
+
 
 ## Installation
 
