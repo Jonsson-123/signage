@@ -1,6 +1,6 @@
 console.log('feedback.js loaded');
-const baseUrl = 'http://localhost:3000';
-// const baseUrl = 'https://wallofwondersinc.northeurope.cloudapp.azure.com';
+//const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://wallofwondersinc.northeurope.cloudapp.azure.com';
 // Generate QR code with Google Survey link
 const surveyLink =
   'https://docs.google.com/forms/d/e/1FAIpQLSfHM_MzAF1n7mKpTBQTSLT0lFamtGNUQh4VOdWXz0kMqo8W6w/viewform?usp=sf_link';
