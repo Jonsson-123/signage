@@ -43,6 +43,10 @@ A series of web applications that provide various functionalities including user
    npm start
    ```
 
+## Project Structure
+
+In the frontend folder you can find public transport HSL data surrounding Nokia Garage (hsl.html & hsl.js), similarly structured is the restaurant data from Nokia One and Dream's Cafe restaurants, "feedbackHistory" gives feedback from the past week's Garage events if they were collected while "feedback" is for live event rating gathering Backend folder is for backend files.
+
 ## Environment Variables
 
 The following environment variables need to be set in the `.env` file in the `backend` directory:
