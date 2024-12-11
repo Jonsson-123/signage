@@ -1,6 +1,6 @@
 # Signage
 
-A series of web applications that provide various functionalities including feedback collection from Nokia events that uses Google forms and has JWT authentication. Websites displaying timetables for public transportation and Lunch menus from Nokia One and Dream’s cafe restaurants.
+A series of web applications that provide various functionalities including feedback collection from Nokia events that uses Google forms and has JWT authentication. Websites displaying timetables for public transportation and Lunch menus from Nokia One and Dream’s cafe restaurants. Check Wall of Wonders Trello backlog for access to Google forms, sheets, docs etc.
 
 ## Table of Contents
 
