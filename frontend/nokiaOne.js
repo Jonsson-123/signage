@@ -4,7 +4,9 @@ let mainIntervalId;
 const fetchNokiaOneData = async () => {
   try {
     // Get the current date in YYYY-MM-DD format
+
     const currentDate = new Date().toISOString().split('T')[0];
+
     //const someDate = new Date();
     //someDate.setDate(someDate.getDate() + 1);
     //const nextDay = someDate.toISOString().split('T')[0];
@@ -48,6 +50,8 @@ const fetchNokiaOneData = async () => {
 
 const renderData = (data) => {
   if (!data || !data.courses) {
+    const parent = document.getElementById('content');
+    parent.innerHTML = 'No data available';
     return;
   }
   const parent = document.getElementById('content');
@@ -58,6 +62,11 @@ const renderData = (data) => {
   // Convert courses object to array
   const coursesArray = Object.values(data.courses);
 
+  if (coursesArray.length === 0) {
+    const noData = document.createElement('p');
+    noData.textContent = 'No data available';
+    container.appendChild(noData);
+  }
   coursesArray.forEach((course) => {
     const courseElement = document.createElement('div');
     courseElement.classList.add('course');
