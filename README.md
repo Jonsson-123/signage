@@ -55,7 +55,7 @@ The following environment variables need to be set in the `.env` file in the `ba
 - `DEFAULT_USER_NAME`: Default username for the initial user.
 - `DEFAULT_USER_PASSWORD`: Default password for the initial user.
 - `MONGO_URI`: MongoDB connection URI.
-- `GOOGLE_APPS_SCRIPT_URL`: URL to Google script, contact developer.
+- `GOOGLE_APPS_SCRIPT_URL`: URL to Google script, get this from Wall of Wonders Trello backlog.
 
 ## API Endpoints
 
