@@ -79,6 +79,11 @@ const renderData = (data) => {
       componentElement.textContent = component;
       menuElement.appendChild(componentElement);
     });
+    if (todayMenu.SetMenus.length < 2) {
+      const componentElement = document.createElement('h3');
+      componentElement.textContent = 'No menu available';
+      menuElement.appendChild(componentElement);
+    }
     const price = document.createElement('p');
     price.textContent = `price: ${setMenu.Price || '12,50€'}`;
     menuElement.appendChild(price);
