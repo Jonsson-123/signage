@@ -1,6 +1,6 @@
 # Signage
 
-A series of web applications that provide various functionalities including user authentication, feedback collection, and displaying timetables for public transportation.
+A series of web applications that provide various functionalities including feedback collection from Nokia events that uses Google forms and has JWT authentication. Websites displaying timetables for public transportation and Lunch menus from Nokia One and Dream’s cafe restaurants.
 
 ## Table of Contents
 
